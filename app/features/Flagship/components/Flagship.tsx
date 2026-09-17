@@ -1,130 +1,40 @@
 import React from 'react'
+import { asset } from '@/app/lib/asset'
 
 const Flagship = () => {
   const events = [
-    /* {
-      logo: 'assets/2025_img/logo 10.png',
-      title: 'North East India Pharma & Health Expo',
-      date: '26 – 28 February, 2026',
-      venue: 'Guwahati, India',
-      link: 'https://www.northeastpharmed.com/',
-    },
     {
-      logo: 'assets/2025_img/logo 11.png',
-      title: 'North East India Medical & Lab Expo',
-      date: '26 – 28 February, 2026',
-      venue: 'Guwahati, India',
-      link: 'https://www.northeastpharmed.com/',
-    },
-    {
-      logo: 'assets/2025_img/logo 4.png',
-      title: 'Uganda Pharma & Healthcare',
-      date: '26 – 28 March, 2026',
-      venue: 'Kampala, Uganda',
-      link: 'https://www.ugandapharmahealth.com/',
-    }, */
-    {
-      logo: '/flagship/flagship3.jpeg',
+      logo: asset('/flagship/flagship3.jpeg'),
       title: 'Kenya Pharma & Healthcare',
       date: '9 – 11 April, 2026',
       venue: 'Kampala, Uganda',
       link: 'https://www.kenyapharmahealth.com/',
     },
     {
-      logo: '/flagship/flagship2.jpeg',
+      logo: asset('/flagship/flagship2.jpeg'),
       title: 'Kenya Buildcon International Expo',
       date: '11 – 13 June, 2026',
       venue: 'Kampala, Uganda',
       link: 'https://kenyabuildcon.com/',
     },
     {
-      logo: '/flagship/flagship1.jpeg',
+      logo: asset('/flagship/flagship1.jpeg'),
       title: 'Kenya Wood International Expo',
       date: '11 – 13 June, 2026',
       venue: 'Kampala, Uganda',
       link: 'https://kenyawoodexpo.com/',
     },
     {
-      logo: '/flagship/flagship.jpeg',
+      logo: asset('/flagship/flagship.jpeg'),
       title: 'Kenya Solar, Electric, Power & Lights International Expo',
       date: '11 – 13 June, 2026',
       venue: 'Kampala, Uganda',
       link: 'https://www.kenyasepl.com/',
     },
-    /* {
-      logo: 'assets/2025_img/logo 5.png',
-      title: 'Power & Elec Uganda International Exhibition',
-      date: '9 – 11 July, 2026',
-      venue: 'Kampala, Uganda',
-      link: 'https://www.powerelecuganda.com/',
-    },
-    {
-      logo: 'assets/2025_img/logo 7.png',
-      title: 'Uganda Buildcon International Expo',
-      date: '6 – 8 August, 2026',
-      venue: 'Kampala, Uganda',
-      link: 'https://ugandabuildcon.com/',
-    },
-    {
-      logo: 'assets/2025_img/logo 1 1.png',
-      title: 'Pharmatech & Health East Africa',
-      date: '19 – 21 August, 2026',
-      venue: 'Dar Es Salaam, Tanzania',
-      link: 'https://www.eastafricapharmed.com/',
-    },
-    {
-      logo: 'assets/2025_img/logo2.png',
-      title: 'Medical & Lab East Africa',
-      date: '19 – 21 August, 2026',
-      venue: 'Dar Es Salaam, Tanzania',
-      link: 'https://www.eastafricapharmed.com/',
-    },
-    {
-      logo: 'assets/2025_img/logo 8.png',
-      title: 'Power & Elec Tanzania International Exhibition',
-      date: '19 – 21 August, 2026',
-      venue: 'Dar Es Salaam, Tanzania',
-      link: 'https://powerelectanzania.com/',
-    },
-    {
-      logo: 'assets/2025_img/logo 13.png',
-      title: 'Nepal Electric, Power & Lights Expo',
-      date: 'September, 2026',
-      venue: 'Kathmandu, Nepal',
-      link: 'https://nepalpowerelec.com/',
-    },
-    {
-      logo: 'assets/2025_img/logo 6.png',
-      title: 'Power & Elec Zambia',
-      date: '28 – 30 October, 2026',
-      venue: 'Lusaka, Zambia',
-      link: 'https://www.powereleczambia.com/',
-    },
-    {
-      logo: 'assets/2025_img/logo 3.png',
-      title: 'Zambia PharmaHealth',
-      date: '28 – 30 October, 2026',
-      venue: 'Lusaka, Zambia',
-      link: 'https://www.zambiapharmahealth.com/',
-    },
-    {
-      logo: 'assets/2025_img/logo 12.png',
-      title: 'Hometex Nepal',
-      date: '',
-      venue: 'Kathmandu, Nepal',
-      link: 'https://www.hometexnepal.com/',
-    },
-    {
-      logo: 'assets/2025_img/logo 9.png',
-      title: 'Nepal Pharma & Health International Expo',
-      date: '19 – 21 December, 2026',
-      venue: 'Kathmandu, Nepal',
-      link: null, // non-clickable
-    }, */
   ]
 
   return (
-    <section id='events' className="py-20 md:py-28 bg-slate-900 relative overflow-hidden">
+    <section id='events' className="py-20 md:py-28 bg-slate-900 relative overflow-hidden scroll-mt-20">
 
       {/* Decorative background glow */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>

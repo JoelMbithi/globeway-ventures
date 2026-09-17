@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+import { asset } from '../lib/asset'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,7 +23,7 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#home" className="flex-shrink-0 cursor-pointer">
             <img
-              src="/globeway-logo.jpg"
+              src={asset('/globeway-logo.jpg')} 
               alt="GLOBEWAY VENTURES Logo"
               className="h-12 md:h-14 w-auto object-contain"
             />

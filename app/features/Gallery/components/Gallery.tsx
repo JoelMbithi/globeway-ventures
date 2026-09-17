@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react'
+import { asset } from '@/app/lib/asset'
 
 const filenames = [
   '0426f457-c214-4325-9d10-4fe68de3a44d.jpg',
@@ -20,7 +21,6 @@ const filenames = [
   '462e8a3d-6521-4cd7-bed5-aace93bfd965.jpg',
   '46dc4c2c-f824-4738-9718-6258db5891de.jpg',
   '47cb130b-45ec-4f53-80d2-19a0c6b200c8.jpg',
- 
   '4ec12a93-7ac1-4a2e-a66c-5924eb8a5b39.jpg',
   '4fdeb3cd-5fd3-4a51-b448-af559672d179.jpg',
   '543cd8d6-dd84-4b74-a799-d3ccd104968e.jpg',
@@ -42,12 +42,10 @@ const filenames = [
   '93a4283b-963f-48a8-b82c-0b0e3401b303.jpg',
   '9e54bc1f-8596-49cf-b969-112a02eb2ca1.jpg',
   '9ffc8e88-b347-4e8d-b371-6b58dcaae130.jpg',
- 
   'a672e300-8978-4c94-8e96-135f9a50288f.jpg',
   'abe40f46-728d-4153-84a9-6879037417fc.jpg',
   'af9c5050-db77-4fde-adf4-77056e2bd09b.jpg',
   'b0563707-49ca-4390-87c1-1d2c97cc2548.jpg',
-  
   'b0829417-e7e9-49d7-b5d3-d547ab7ba13d.jpg',
   'b2b045d4-8e9b-4a01-8671-77ea570f6613.jpg',
   'b95e35ca-8fdf-46de-ba88-7438acd4807f.jpg',
@@ -68,7 +66,6 @@ const filenames = [
   'd9d04ad6-8671-4610-a8ba-00a2a3833255.jpg',
   'db39506f-25f1-46c5-8336-0a8d81c8b9a1.jpg',
   'e1333099-46f1-4764-b683-f3b5a269e713.jpg',
-
   'e35b0065-26aa-452e-9133-4ba973b61adf.jpg',
   'ebf9cc3e-354c-46f4-a932-b15f62b977c6.jpg',
   'f060d265-c091-48cd-9955-49eccf060c2f.jpg',
@@ -81,7 +78,7 @@ const filenames = [
 ]
 
 const images = filenames.map((filename, i) => ({
-  src: `/gallery/${filename}`,
+  src: asset(`/gallery/${filename}`),
   alt: `Gallery image ${i + 1}`,
 }))
 
@@ -117,7 +114,7 @@ const Gallery = ({ images: propImages }: { images?: { src: string; alt: string }
 
   return (
     <>
-      <section className="py-20 md:py-28 bg-white" id="gallery">
+      <section className="py-20 md:py-28 bg-white scroll-mt-20" id="gallery">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="max-w-3xl mx-auto text-center mb-14">
@@ -138,7 +135,7 @@ const Gallery = ({ images: propImages }: { images?: { src: string; alt: string }
               <button
                 key={index}
                 onClick={() => setSelectedIndex(index)}
-                className="group relative aspect-square overflow-hidden rounded-xl bg-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+                className="group relative aspect-square overflow-hidden rounded-xl bg-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 cursor-pointer"
                 aria-label={`View ${image.alt}`}
               >
                 <img
@@ -169,7 +166,7 @@ const Gallery = ({ images: propImages }: { images?: { src: string; alt: string }
         >
           <button
             onClick={() => setSelectedIndex(null)}
-            className="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors z-10"
+            className="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors z-10 cursor-pointer"
             aria-label="Close"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -188,7 +185,7 @@ const Gallery = ({ images: propImages }: { images?: { src: string; alt: string }
                 prev === null ? 0 : (prev - 1 + galleryImages.length) % galleryImages.length
               )
             }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-cyan-500 text-white flex items-center justify-center transition-colors z-10"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-cyan-500 text-white flex items-center justify-center transition-colors z-10 cursor-pointer"
             aria-label="Previous image"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -203,7 +200,7 @@ const Gallery = ({ images: propImages }: { images?: { src: string; alt: string }
                 prev === null ? 0 : (prev + 1) % galleryImages.length
               )
             }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-cyan-500 text-white flex items-center justify-center transition-colors z-10"
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-cyan-500 text-white flex items-center justify-center transition-colors z-10 cursor-pointer"
             aria-label="Next image"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

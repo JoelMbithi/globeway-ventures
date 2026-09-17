@@ -1,4 +1,5 @@
 import React from 'react'
+import { asset } from '@/app/lib/asset'
 
 const Services = () => {
   const services = [
@@ -7,21 +8,21 @@ const Services = () => {
       title: 'Exhibitions & Trade Fairs',
       description:
         'Exhibitions are a proven sales and marketing medium that provide a platform for stakeholders to stand face-to-face in one place at a time. We attract leading brands to our exhibitions taking place in various parts of the world, connecting them directly with their target business delegates.',
-      image: '/images/sarit.jpg',
+      image: asset('/images/sarit.jpg'),
     },
     {
       number: '02',
       title: 'Event Management & Solutions',
       description:
         'We are a one-stop shop for all your event-related requirements. We provide assistance for event management and event solutions including booth construction and fabrication, conferences, webinars, branding and marketing services, travel and visa assistance, apart from planning and execution of events.',
-      image: '/images/sarit4.jpg',
+      image: asset('/images/sarit4.jpg'),
     },
     {
       number: '03',
       title: 'Buyer Seller Meets',
       description:
         'We have vast experience organizing Buyer Seller and Reverse Buyer Seller Meets worldwide. Through our ever-present network of international partners, we provide assistance in smoothly organizing such events in any desired country depending on the sectors of interest and demand.',
-      image: '/images/sarit3.jpg',
+      image: asset('/images/sarit3.jpg'),
     },
   ]
 

@@ -1,12 +1,13 @@
 "use client"
 import React, { useState, useEffect } from 'react'
+import { asset } from '@/app/lib/asset'
 
 const Hero = () => {
   const slides = [
-    { src: '/images/sarit.jpg', alt: 'GLOBEWAY Exhibition' },
-    { src: '/images/sarit2.jpg', alt: 'GLOBEWAY Exhibition' },
-    { src: '/images/sarit3.jpg', alt: 'GLOBEWAY Exhibition' },
-    { src: '/images/sarit4.jpg', alt: 'GLOBEWAY Exhibition' },
+    { src: asset('/images/sarit.jpg'), alt: 'GLOBEWAY Exhibition' },
+    { src: asset('/images/sarit2.jpg'), alt: 'GLOBEWAY Exhibition' },
+    { src: asset('/images/sarit3.jpg'), alt: 'GLOBEWAY Exhibition' },
+    { src: asset('/images/sarit4.jpg'), alt: 'GLOBEWAY Exhibition' },
   ]
 
   const [activeIndex, setActiveIndex] = useState(0)
@@ -20,7 +21,7 @@ const Hero = () => {
   }, [slides.length])
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-[90vh] flex items-center overflow-hidden scroll-mt-20">
 
       {/* Slideshow Background */}
       <div className="absolute inset-0">
@@ -69,14 +70,14 @@ const Hero = () => {
           {/* Buttons */}
           <div className="flex flex-wrap gap-4">
             <a
-              href="exhibitions.html"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold rounded-lg shadow-lg shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-0.5"
+              href="#events"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold rounded-lg shadow-lg shadow-cyan-500/30 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
             >
               Explore Exhibitions
             </a>
             <a
-              href="contact.html"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-transparent hover:bg-white text-white hover:text-slate-900 font-semibold rounded-lg border-2 border-white transition-all duration-300 hover:-translate-y-0.5"
+              href="#contact"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-transparent hover:bg-white text-white hover:text-slate-900 font-semibold rounded-lg border-2 border-white transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
             >
               Partner With Us
             </a>
@@ -92,7 +93,7 @@ const Hero = () => {
             key={index}
             onClick={() => setActiveIndex(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={`h-2 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
               index === activeIndex ? 'w-8 bg-cyan-400' : 'w-2 bg-white/50 hover:bg-white/80'
             }`}
           />

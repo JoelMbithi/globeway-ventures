@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+import { asset } from '@/app/lib/asset'
 
 const Contacts = () => {
   const [form, setForm] = useState({
@@ -35,16 +36,6 @@ const Contacts = () => {
       label: 'Head Office',
       value: 'Nairobi, Kenya',
     },
-    /* {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
-      label: 'Overseas Office',
-      value: 'Kampala, Uganda',
-    }, */
     {
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,14 +60,12 @@ const Contacts = () => {
     <>
       {/* ===== PAGE TITLE AREA ===== */}
       <div className="relative overflow-hidden">
-        {/* Background Image */}
         <img
-          src="/images/sarit.jpg"
+          src={asset('/images/sarit.jpg')}
           alt="Contact GLOBEWAY VENTURES"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-blue-900/80"></div>
 
         <div className="relative max-w-[1740px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-center">
@@ -96,10 +85,7 @@ const Contacts = () => {
       </div>
 
       {/* ===== CONTACT AREA ===== */}
-      <section
-        id="contact"
-        className="py-20 md:py-28 bg-white scroll-mt-20"
-      >
+      <section id="contact" className="py-20 md:py-28 bg-white scroll-mt-20">
         <div className="max-w-[1740px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
@@ -263,26 +249,22 @@ const Contacts = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="group relative rounded overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               <img
-                src="/images/sarit.jpg"
+                src={asset('/images/sarit.jpg')}
                 alt="GLOBEWAY VENTURES Nairobi Office"
                 className="w-full h-120 object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6">
-                <h3 className="text-white font-bold text-lg">Kampala, Uganda</h3>
+                <h3 className="text-white font-bold text-lg">Nairobi, Kenya</h3>
                 <p className="text-cyan-400 text-sm font-medium">Head Office</p>
               </div>
             </div>
 
             <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               <img
-                src="/images/sarit2.jpg"
+                src={asset('/images/sarit2.jpg')}
                 alt="GLOBEWAY VENTURES Kampala Office"
                 className="w-full h-120 object-cover transition-transform duration-700 group-hover:scale-105"
               />
-             {/*  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6">
-                <h3 className="text-white font-bold text-lg">Kampala, Uganda</h3>
-                <p className="text-cyan-400 text-sm font-medium">Overseas Office</p>
-              </div> */}
             </div>
           </div>
 
@@ -309,7 +291,7 @@ const Contacts = () => {
               className="w-full h-[400px] md:h-[500px] border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="GLOBEWAY VENTURES — Kampala, Uganda"
+              title="GLOBEWAY VENTURES — Nairobi, Kenya"
             />
           </div>
 

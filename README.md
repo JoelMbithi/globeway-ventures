@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A production-grade Next.js website for GLOBEWAY VENTURES, an exhibition and event management company in Nairobi, Kenya. Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS v4, featuring a single-page scroll layout, a 74-image gallery with lightbox, a fully responsive mobile menu, and a contact form with captcha validation.
 
 ## Getting Started
 

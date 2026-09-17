@@ -1,18 +1,19 @@
 "use client"
 import React, { useState } from 'react'
+import Link from 'next/link'
 import { asset } from '../lib/asset'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const links = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '#about' },
-    { name: 'Sectors', href: '#sectors' },
-    { name: 'Exhibitions & Events', href: '#events' },
-    { name: 'Services', href: '#services' },
-    { name: 'Gallery', href: '/Gallery' },
-    { name: 'Contact', href: '/Contacts' },
+    { name: 'Home', href: '/', type: 'route' },
+    { name: 'About', href: '#about', type: 'hash' },
+    { name: 'Sectors', href: '#sectors', type: 'hash' },
+    { name: 'Exhibitions & Events', href: '#events', type: 'hash' },
+    { name: 'Services', href: '#services', type: 'hash' },
+    { name: 'Gallery', href: '/Gallery', type: 'route' },
+    { name: 'Contact', href: '/Contacts', type: 'route' },
   ]
 
   return (
@@ -21,25 +22,35 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
 
           {/* Logo */}
-          <a href="#home" className="flex-shrink-0 cursor-pointer">
+          <Link href="/" className="flex-shrink-0 cursor-pointer">
             <img
-              src={asset('/globeway-logo.jpg')} 
+              src={asset('/globeway-logo.jpg')}
               alt="GLOBEWAY VENTURES Logo"
               className="h-12 md:h-14 w-auto object-contain"
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-x-7 xl:gap-x-8">
-            {links.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-gray-700 hover:text-cyan-600 font-medium text-sm xl:text-base transition-colors duration-300 cursor-pointer whitespace-nowrap"
-              >
-                {link.name}
-              </a>
-            ))}
+            {links.map((link) =>
+              link.type === 'route' ? (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-700 hover:text-cyan-600 font-medium text-sm xl:text-base transition-colors duration-300 cursor-pointer whitespace-nowrap"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-700 hover:text-cyan-600 font-medium text-sm xl:text-base transition-colors duration-300 cursor-pointer whitespace-nowrap"
+                >
+                  {link.name}
+                </a>
+              )
+            )}
           </nav>
 
           {/* Mobile Hamburger */}
@@ -65,16 +76,27 @@ const Navbar = () => {
       {isOpen && (
         <nav className="lg:hidden bg-white border-t border-slate-200 shadow-lg">
           <div className="max-w-[1740px] mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1">
-            {links.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-gray-700 hover:text-cyan-600 hover:bg-slate-50 font-medium text-base py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
-              >
-                {link.name}
-              </a>
-            ))}
+            {links.map((link) =>
+              link.type === 'route' ? (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-700 hover:text-cyan-600 hover:bg-slate-50 font-medium text-base py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-700 hover:text-cyan-600 hover:bg-slate-50 font-medium text-base py-3 px-3 rounded-lg transition-colors duration-200 cursor-pointer"
+                >
+                  {link.name}
+                </a>
+              )
+            )}
           </div>
         </nav>
       )}

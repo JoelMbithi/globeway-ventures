@@ -12,8 +12,8 @@ const Navbar = () => {
     { name: 'Sectors', href: '#sectors', type: 'hash' },
     { name: 'Exhibitions & Events', href: '#events', type: 'hash' },
     { name: 'Services', href: '#services', type: 'hash' },
-    { name: 'Gallery', href: '/Gallery', type: 'route' },
-    { name: 'Contact', href: '/Contacts', type: 'route' },
+    { name: 'Gallery', href: '/Gallerys', type: 'route' },
+    { name: 'Contact', href: '/Contact  ', type: 'route' },
   ]
 
   return (

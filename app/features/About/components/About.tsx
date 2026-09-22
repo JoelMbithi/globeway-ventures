@@ -38,13 +38,16 @@ const About = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute bottom-70 -right-4 sm:right-92 w-40 h-40 sm:w-52 sm:h-52 md:w-70 md:h-70 rounded overflow-hidden  shadow-2xl">
-              <img
-                src="images/sarit7.jpeg"
-                alt="GLOBEWAY Ventures exhibition"
-                className="w-full h-full object-cover"
-              />
-            </div>
+           {/* Floating Image 3 - positioned with absolute, fully responsive */}
+<div className="absolute bottom-48 right-32 sm:bottom-56 sm:right-44 md:bottom-64 md:right-56 lg:bottom-70 lg:right-72 xl:right-90 2xl:right-150
+                w-24 h-24 xs:w-28 xs:h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60 
+                rounded overflow-hidden  ">
+  <img
+    src="images/sarit7.jpeg"
+    alt="GLOBEWAY Ventures exhibition"
+    className="w-full h-full object-cover"
+  />
+</div>
           </div>
 
           {/* Text Side */}

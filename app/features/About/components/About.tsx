@@ -38,7 +38,7 @@ const About = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute bottom-70 -right-4 sm:right-146 w-40 h-40 sm:w-52 sm:h-52 md:w-70 md:h-70 rounded overflow-hidden  shadow-2xl">
+            <div className="absolute bottom-70 -right-4 sm:right-92 w-40 h-40 sm:w-52 sm:h-52 md:w-70 md:h-70 rounded overflow-hidden  shadow-2xl">
               <img
                 src="images/sarit7.jpeg"
                 alt="GLOBEWAY Ventures exhibition"
@@ -120,8 +120,8 @@ const About = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-12 border-t border-slate-200">
           {[
             { value: '50+', label: 'Events Delivered' },
-            { value: '30+', label: 'Global Partners' },
-            { value: '15+', label: 'Countries Served' },
+            { value: '5+', label: 'Global Partners' },
+            { value: '1+', label: 'Countries Served' },
             { value: '100%', label: 'Client Satisfaction' },
           ].map((stat, index) => (
             <div key={index} className="text-center">

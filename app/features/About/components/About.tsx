@@ -39,8 +39,8 @@ const About = () => {
               />
             </div>
            {/* Floating Image 3 - positioned with absolute, fully responsive */}
-<div className="absolute bottom-98 right-60 sm:bottom-56 sm:right-44 md:bottom-64 md:right-56 lg:bottom-70 lg:right-72 xl:right-90 2xl:right-150
-                w-24 h-24 xs:w-28 xs:h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60 
+<div className="absolute bottom-86 right-60 sm:bottom-56 sm:right-44 md:bottom-64 md:right-56 lg:bottom-70 lg:right-72 xl:right-90 2xl:right-150
+                w-40 h-40 xs:w-28 xs:h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60 
                 rounded overflow-hidden  ">
   <img
     src="images/sarit7.jpeg"

@@ -115,7 +115,7 @@ const Members = () => {
         {/* CTA Button */}
         <div className="text-center">
           <a
-            href="/Contact"
+            href="/Contacts"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-slate-900 hover:bg-cyan-600 text-white text-sm font-semibold rounded-lg shadow-lg transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
           >
             Join Our Network

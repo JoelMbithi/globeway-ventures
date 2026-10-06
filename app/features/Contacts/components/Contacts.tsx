@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { asset } from '@/app/lib/asset'
+import Link from 'next/link'
 
 const Contacts = () => {
   const [form, setForm] = useState({
@@ -74,9 +75,9 @@ const Contacts = () => {
           </h1>
           <ul className="flex items-center justify-center gap-2 text-sm md:text-base text-slate-300">
             <li>
-              <a href="#home" className="hover:text-cyan-400 transition-colors cursor-pointer">
+              <Link href="/" className="hover:text-cyan-400 transition-colors cursor-pointer">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="text-slate-500">/</li>
             <li className="text-cyan-400 font-medium">Contact Us</li>
@@ -214,7 +215,7 @@ const Contacts = () => {
 
                     {status === 'success' && (
                       <p className="mt-4 text-green-600 font-medium">
-                        ✓ Thank you! We'll be in touch shortly.
+                        ✓ Thank you! We will be in touch shortly.
                       </p>
                     )}
                     {status === 'error' && (

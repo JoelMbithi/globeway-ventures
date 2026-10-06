@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./shared/Navbar";
 import Footer from "./shared/Footer";
+import WhatsAppButton from "./shared/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,14 +20,12 @@ export const metadata: Metadata = {
   description:
     "Professional exhibition and event management connecting global brands with opportunities in Kenya and East Africa.",
 
-  // 🔽 THIS IS THE KEY PART — replaces the Next.js logo everywhere
   icons: {
     icon: "/globeway-logo.png",
     shortcut: "/globeway-logo.png",
     apple: "/globeway-logo.png",
   },
 
-  // Social share preview (WhatsApp, LinkedIn, Twitter, Facebook, etc.)
   openGraph: {
     title: "GLOBWAY VENTURES",
     description:
@@ -58,6 +57,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

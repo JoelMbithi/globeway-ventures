@@ -7,18 +7,20 @@ import Flagship from './features/Flagship/components/Flagship'
 import WhyUs from './features/WhyUs/components/WhyUs'
 import Partners from './features/Partners/components/Partners'
 import Testimonials from './features/Testimonals/components/Testimonials'
+import Members from './features/Members/components/Members'
 
 export default function Page() {
   return (
     <>
       <Hero />
       <About />
-     {/*  <Vission />  */}
-      {/* <Certifications /> */}
-      {/* <Services />
+       <Vission />  
+       {/* <Certifications />  */}
+       <Services />
       <Flagship />
-      <WhyUs /> */}
-      {/* <Partners /> */}
+      <WhyUs /> 
+      {/*  <Partners />  */}
+      <Members/>
       {/* <Testimonials /> */}
     </>
   )

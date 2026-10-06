@@ -76,7 +76,7 @@ const Hero = () => {
               Explore Exhibitions
             </a>
             <a
-              href="#contact"
+              href="/Contacts"
               className="inline-flex items-center justify-center px-8 py-3.5 bg-transparent hover:bg-white text-white hover:text-slate-900 font-semibold rounded-lg border-2 border-white transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
             >
               Partner With Us

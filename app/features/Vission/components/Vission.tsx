@@ -1,80 +1,69 @@
 import React from 'react'
+import { asset } from '@/app/lib/asset'
+
+const statements = [
+  {
+    label: 'Our vision',
+    title: 'The gateway to East Africa',
+    text: 'To be East Africa’s leading gateway for global brands looking to enter the market and be seen.',
+  },
+  {
+    label: 'Our mission',
+    title: 'Real connections, well run',
+    text: 'To run exhibitions that are professional and run smoothly, and that connect global companies with local opportunity.',
+  },
+]
 
 const Vission = () => {
   return (
-    <section className="py-20 md:py-28 bg-slate-50">
-      <div className="max-w-[1740px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-slate-900 py-16 md:py-24">
+      <div className="mx-auto max-w-[1740px] px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
 
-        {/* Section Heading */}
-        <div className="max-w-3xl mb-14">
-          <span className="inline-block text-cyan-600 font-semibold text-xs sm:text-sm tracking-[0.25em] uppercase mb-4">
-            Our Direction
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
-            Driven by Purpose. Built for Impact.
-          </h2>
-          <div className="w-20 h-1 bg-cyan-500 rounded-full"></div>
-        </div>
-
-        {/* Vision & Mission Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-          {/* Vision Box */}
-          <div className="group relative bg-white rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-xl border border-slate-200 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1">
-            
-            {/* Big Number */}
-            <div className="text-6xl md:text-7xl font-bold text-slate-100 group-hover:text-cyan-500/20 transition-colors duration-300 mb-4">
-              01
+          {/* Photo */}
+          <div className="relative min-h-[320px] overflow-hidden bg-slate-800 lg:col-span-5 lg:min-h-[640px]">
+            <img
+              src={asset('/images/sarit3.jpg')}
+              alt="Globeway exhibition floor"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-24 md:p-8">
+              <p className="font-serif text-2xl leading-snug text-white md:text-3xl">
+                Where we’re headed
+              </p>
             </div>
-
-            {/* Label */}
-            <div className="text-cyan-600 font-semibold text-xs tracking-[0.25em] uppercase mb-3">
-              Our Vision
-            </div>
-
-            {/* Heading */}
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-              The Gateway to East Africa
-            </h3>
-
-            {/* Description */}
-            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-              To be East Africa's leading gateway for global brands seeking market entry and visibility.
-            </p>
-
-            {/* Accent bar */}
-            <div className="absolute bottom-0 left-8 right-8 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></div>
           </div>
 
-          {/* Mission Box */}
-          <div className="group relative bg-white rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-xl border border-slate-200 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1">
+          {/* Statements */}
+          <div className="flex flex-col lg:col-span-7">
+            {statements.map((item, index) => (
+              <div
+                key={item.label}
+                className={`flex flex-1 flex-col justify-center border-t border-white/20 py-10 md:py-12 ${
+                  index === statements.length - 1
+                    ? 'border-b lg:border-b-0'
+                    : ''
+                }`}
+              >
+                <div className="mb-6 flex items-center gap-4">
+                  <span className="h-px w-10 bg-cyan-400" />
+                  <span className="text-sm font-medium text-slate-300">
+                    {item.label}
+                  </span>
+                </div>
 
-            {/* Big Number */}
-            <div className="text-6xl md:text-7xl font-bold text-slate-100 group-hover:text-cyan-500/20 transition-colors duration-300 mb-4">
-              02
-            </div>
+                <h3 className="font-serif text-4xl leading-[1.1] tracking-tight text-white md:text-5xl">
+                  {item.title}
+                </h3>
 
-            {/* Label */}
-            <div className="text-cyan-600 font-semibold text-xs tracking-[0.25em] uppercase mb-3">
-              Our Mission
-            </div>
-
-            {/* Heading */}
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-              Creating Meaningful Connections
-            </h3>
-
-            {/* Description */}
-            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-              To deliver seamless, professional, and impactful exhibition experiences that connect global enterprises with local opportunity.
-            </p>
-
-            {/* Accent bar */}
-            <div className="absolute bottom-0 left-8 right-8 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></div>
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300 md:text-xl">
+                  {item.text}
+                </p>
+              </div>
+            ))}
           </div>
 
         </div>
-
       </div>
     </section>
   )

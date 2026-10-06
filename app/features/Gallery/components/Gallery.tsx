@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { asset } from '@/app/lib/asset'
 
 const filenames = [
@@ -22,6 +22,7 @@ const filenames = [
   '46dc4c2c-f824-4738-9718-6258db5891de.jpg',
   '47cb130b-45ec-4f53-80d2-19a0c6b200c8.jpg',
   '4ec12a93-7ac1-4a2e-a66c-5924eb8a5b39.jpg',
+  '4ec12a93-7ac1-4a2e-a66c-5924eb8a5b39 (1).jpg',
   '4fdeb3cd-5fd3-4a51-b448-af559672d179.jpg',
   '543cd8d6-dd84-4b74-a799-d3ccd104968e.jpg',
   '548d56ae-5fd3-42fa-97e0-b9aba5f2e6eb.jpg',
@@ -43,10 +44,12 @@ const filenames = [
   '9e54bc1f-8596-49cf-b969-112a02eb2ca1.jpg',
   '9ffc8e88-b347-4e8d-b371-6b58dcaae130.jpg',
   'a672e300-8978-4c94-8e96-135f9a50288f.jpg',
+  'a672e300-8978-4c94-8e96-135f9a50288f (1).jpg',
   'abe40f46-728d-4153-84a9-6879037417fc.jpg',
   'af9c5050-db77-4fde-adf4-77056e2bd09b.jpg',
   'b0563707-49ca-4390-87c1-1d2c97cc2548.jpg',
   'b0829417-e7e9-49d7-b5d3-d547ab7ba13d.jpg',
+  'b0829417-e7e9-49d7-b5d3-d547ab7ba13d (1).jpg',
   'b2b045d4-8e9b-4a01-8671-77ea570f6613.jpg',
   'b95e35ca-8fdf-46de-ba88-7438acd4807f.jpg',
   'ba802cee-28ab-49d0-9139-ffb17d37b488.jpg',
@@ -67,6 +70,7 @@ const filenames = [
   'db39506f-25f1-46c5-8336-0a8d81c8b9a1.jpg',
   'e1333099-46f1-4764-b683-f3b5a269e713.jpg',
   'e35b0065-26aa-452e-9133-4ba973b61adf.jpg',
+  'e35b0065-26aa-452e-9133-4ba973b61adf (1).jpg',
   'ebf9cc3e-354c-46f4-a932-b15f62b977c6.jpg',
   'f060d265-c091-48cd-9955-49eccf060c2f.jpg',
   'f24515ac-8065-4956-a426-b9fa9d5684ff.jpg',
@@ -75,35 +79,134 @@ const filenames = [
   'f84f0392-8820-4007-9d15-a727ba50824f.jpg',
   'f8de5353-7e1d-4434-b976-4e539a30b113.jpg',
   'ffe52328-598c-4ab2-a29f-a3389e291b37.jpg',
+  'WhatsApp Image 2026-10-06 at 19.05.43.jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.44.jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.45.jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.46.jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.48.jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.49.jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.49(1).jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.49(2).jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.50.jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.50(1).jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.54.jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.54(1).jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.54(2).jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.55.jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.56.jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.56(1).jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.56(2).jpeg',
+  'WhatsApp Image 2026-10-06 at 19.05.57.jpeg',
 ]
 
-const images = filenames.map((filename, i) => ({
-  src: asset(`/gallery/${filename}`),
+const allImages = filenames.map((filename, i) => ({
+  src: asset(`/gallery/${encodeURIComponent(filename)}`),
   alt: `Gallery image ${i + 1}`,
+  id: filename,
 }))
 
-const Gallery = ({ images: propImages }: { images?: { src: string; alt: string }[] } = {}) => {
-  const galleryImages = propImages ?? images
+type GalleryImage = { src: string; alt: string; id: string }
+
+// Tile layout — same fixed positions, images shuffle between them
+const tiles = [
+  { size: 'lg', span: 'col-span-2 row-span-2' },
+  { size: 'md', span: 'col-span-1 row-span-1' },
+  { size: 'sm', span: 'col-span-1 row-span-1' },
+  { size: 'md', span: 'col-span-1 row-span-1' },
+  { size: 'sm', span: 'col-span-1 row-span-1' },
+  { size: 'lg', span: 'col-span-2 row-span-2' },
+  { size: 'sm', span: 'col-span-1 row-span-1' },
+  { size: 'md', span: 'col-span-1 row-span-1' },
+  { size: 'sm', span: 'col-span-1 row-span-1' },
+  { size: 'md', span: 'col-span-1 row-span-1' },
+  { size: 'sm', span: 'col-span-1 row-span-1' },
+  { size: 'md', span: 'col-span-1 row-span-1' },
+] as const
+
+const HOLD_MS = 10_000   // how long each set stays on screen
+const FADE_MS = 800      // fade duration — smooth, not jarring
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
+function pickRandom<T>(pool: T[], count: number): T[] {
+  if (pool.length <= count) return shuffle(pool)
+  return shuffle(pool).slice(0, count)
+}
+
+const Gallery = ({ images = allImages }: { images?: GalleryImage[] }) => {
+  const pool = images.length > 0 ? images : allImages
+  const tileCount = Math.min(tiles.length, pool.length)
+
+  const [assignment, setAssignment] = useState<GalleryImage[]>(() =>
+    pickRandom(pool, tileCount)
+  )
+  const [fading, setFading] = useState(false)
+  const poolRef = useRef(pool)
+  poolRef.current = pool
+
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+
+  // Preload every image once so the shuffle never shows a blank tile
+  useEffect(() => {
+    poolRef.current.forEach((img) => {
+      const i = new window.Image()
+      i.src = img.src
+    })
+  }, [])
+
+  // Shuffle loop — hold 10s, fade out, swap, fade in, repeat
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>
+    let swapId: ReturnType<typeof setTimeout>
+
+    const cycle = () => {
+      // fade out
+      setFading(true)
+
+      // swap at the midpoint of the fade so the transition feels seamless
+      swapId = setTimeout(() => {
+        setAssignment(pickRandom(poolRef.current, tileCount))
+        setFading(false)
+      }, FADE_MS / 2)
+
+      // schedule the next cycle — hold for HOLD_MS from the swap point
+      timeoutId = setTimeout(cycle, HOLD_MS)
+    }
+
+    timeoutId = setTimeout(cycle, HOLD_MS)
+
+    return () => {
+      clearTimeout(timeoutId)
+      clearTimeout(swapId)
+    }
+  }, [tileCount])
+
+  const next = useCallback(
+    () => setSelectedIndex((prev) => (prev === null ? 0 : (prev + 1) % pool.length)),
+    [pool.length]
+  )
+  const prev = useCallback(
+    () => setSelectedIndex((p) => (p === null ? 0 : (p - 1 + pool.length) % pool.length)),
+    [pool.length]
+  )
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (selectedIndex === null) return
       if (e.key === 'Escape') setSelectedIndex(null)
-      if (e.key === 'ArrowRight') {
-        setSelectedIndex((prev) =>
-          prev === null ? 0 : (prev + 1) % galleryImages.length
-        )
-      }
-      if (e.key === 'ArrowLeft') {
-        setSelectedIndex((prev) =>
-          prev === null ? 0 : (prev - 1 + galleryImages.length) % galleryImages.length
-        )
-      }
+      if (e.key === 'ArrowRight') next()
+      if (e.key === 'ArrowLeft') prev()
     }
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
-  }, [selectedIndex, galleryImages.length])
+  }, [selectedIndex, next, prev])
 
   useEffect(() => {
     document.body.style.overflow = selectedIndex !== null ? 'hidden' : ''
@@ -114,108 +217,149 @@ const Gallery = ({ images: propImages }: { images?: { src: string; alt: string }
 
   return (
     <>
-      <section className="py-20 md:py-28 bg-white scroll-mt-20" id="gallery">
-        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        id="gallery"
+        className="scroll-mt-20 bg-[#f7f6f3] px-6 py-24 text-[#0b1f33] md:px-12 md:py-32"
+      >
+        {/* Header */}
+        <div className="mx-auto mb-12 max-w-[1520px] md:mb-16">
+          <div className="grid gap-6 md:grid-cols-12 md:items-end md:gap-10">
+            <div className="md:col-span-7">
+              <div className="mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[#004d9c]">
+                <span className="inline-block h-px w-6 bg-[#004d9c]" />
+                Gallery
+               
+              </div>
 
-          <div className="max-w-3xl mx-auto text-center mb-14">
-            <span className="inline-block text-cyan-600 font-semibold text-xs sm:text-sm tracking-[0.25em] uppercase mb-4">
-              Our Gallery
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
-              Creating Experiences That Stand Out
-            </h2>
-            <div className="w-20 h-1 bg-cyan-500 rounded-full mx-auto mb-6"></div>
-            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-              A glimpse into exhibition environments, brand experiences and event solutions delivered with professionalism and attention to detail.
+              <h2 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.02em]">
+                Moments from
+                <br />
+                <span className="italic text-[#004d9c]">the work.</span>
+              </h2>
+            </div>
+
+            <p className="max-w-sm text-base leading-relaxed text-[#0b1f33]/70 md:col-span-5 md:justify-self-end">
+              Stands, exhibitions and events. Click any photo to open it.
             </p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-            {galleryImages.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedIndex(index)}
-                className="group relative aspect-square overflow-hidden rounded-xl bg-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 cursor-pointer"
-                aria-label={`View ${image.alt}`}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
-                  <div className="flex items-center gap-2 text-white font-semibold text-sm">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                    </svg>
-                    View
-                  </div>
-                </div>
-              </button>
-            ))}
+        {/* Tile grid */}
+        <div className="mx-auto max-w-[1320px]">
+          <div
+            className={`
+              grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4
+              transition-opacity ease-in-out
+              ${fading ? 'opacity-0' : 'opacity-100'}
+            `}
+            style={{ transitionDuration: `${FADE_MS}ms` }}
+          >
+            {assignment.map((image, tileIndex) => {
+              const tile = tiles[tileIndex]
+              if (!tile) return null
+
+              return (
+                <button
+                  key={tileIndex}
+                  onClick={() => {
+                    const idx = pool.findIndex((p) => p.id === image.id)
+                    setSelectedIndex(idx === -1 ? 0 : idx)
+                  }}
+                  className={`
+                    group relative cursor-pointer overflow-hidden
+                    bg-[#e8e6e1]
+                    ${tile.span}
+                    ${
+                      tile.size === 'lg'
+                        ? 'aspect-square md:aspect-auto md:min-h-[28rem]'
+                        : 'aspect-square md:min-h-[13.5rem]'
+                    }
+                    focus:outline-none focus:ring-2 focus:ring-[#004d9c] focus:ring-offset-2
+                  `}
+                  aria-label={`View ${image.alt}`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    draggable={false}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f33]/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                </button>
+              )
+            })}
           </div>
-
         </div>
       </section>
 
+      {/* Lightbox */}
       {selectedIndex !== null && (
         <div
-          className="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0b1f33]/95 p-4 backdrop-blur-sm animate-[lbFade_.25s_ease]"
           onClick={() => setSelectedIndex(null)}
         >
-          <button
-            onClick={() => setSelectedIndex(null)}
-            className="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors z-10 cursor-pointer"
-            aria-label="Close"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          <div className="absolute top-4 left-4 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium">
-            {selectedIndex + 1} / {galleryImages.length}
+          <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4 md:p-6">
+            <span className="font-mono text-[11px] tabular-nums tracking-[0.14em] text-white/60">
+              {String(selectedIndex + 1).padStart(2, '0')} / {String(pool.length).padStart(2, '0')}
+            </span>
+            <button
+              onClick={() => setSelectedIndex(null)}
+              className="cursor-pointer border-b border-white/40 pb-0.5 font-mono text-[11px] uppercase tracking-[0.14em] text-white transition-colors hover:border-[#00ade2] hover:text-[#00ade2]"
+            >
+              Close
+            </button>
           </div>
 
           <button
             onClick={(e) => {
               e.stopPropagation()
-              setSelectedIndex((prev) =>
-                prev === null ? 0 : (prev - 1 + galleryImages.length) % galleryImages.length
-              )
+              prev()
             }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-cyan-500 text-white flex items-center justify-center transition-colors z-10 cursor-pointer"
+            className="absolute left-2 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-3 text-white/60 transition-colors hover:bg-white/10 hover:text-white md:left-6"
             aria-label="Previous image"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           <button
             onClick={(e) => {
               e.stopPropagation()
-              setSelectedIndex((prev) =>
-                prev === null ? 0 : (prev + 1) % galleryImages.length
-              )
+              next()
             }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-cyan-500 text-white flex items-center justify-center transition-colors z-10 cursor-pointer"
+            className="absolute right-2 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full p-3 text-white/60 transition-colors hover:bg-white/10 hover:text-white md:right-6"
             aria-label="Next image"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
             </svg>
           </button>
 
           <img
-            src={galleryImages[selectedIndex].src}
-            alt={galleryImages[selectedIndex].alt}
+            key={selectedIndex}
+            src={pool[selectedIndex].src}
+            alt={pool[selectedIndex].alt}
             onClick={(e) => e.stopPropagation()}
-            className="max-w-full max-h-[90vh] rounded-xl shadow-2xl object-contain"
+            className="max-h-[85vh] max-w-full object-contain animate-[lbImg_.3s_ease]"
           />
         </div>
       )}
+
+      <style>{`
+        @keyframes lbFade {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes lbImg {
+          from { opacity: 0; transform: scale(0.98); }
+          to   { opacity: 1; transform: scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          [class*="animate-[lb"] { animation: none !important; }
+        }
+      `}</style>
     </>
   )
 }

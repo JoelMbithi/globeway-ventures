@@ -1,106 +1,112 @@
 import React from 'react'
 import { asset } from '@/app/lib/asset'
 
+const services = [
+  {
+    number: '01',
+    title: 'Exhibitions & Trade Fairs',
+    description:
+      'Exhibitions put buyers and sellers face to face, in one place at one time. We bring leading brands to our shows around the world and connect them directly with the business delegates they want to meet.',
+    image: asset('/images/sarit.jpg'),
+    secondaryImage: asset('/images/sarit4.jpg'),
+  },
+  {
+    number: '02',
+    title: 'Event Management & Solutions',
+    description:
+      'Whatever your event needs, we can take it on: booth design and construction, conferences, webinars, branding and marketing, travel and visa support, and the planning and running of the event itself.',
+    image: asset('/images/sarit4.jpg'),
+    secondaryImage: asset('/images/sarit3.jpg'),
+  },
+  {
+    number: '03',
+    title: 'Buyer Seller Meets',
+    description:
+      'We have organized Buyer Seller and Reverse Buyer Seller Meets across the world. With our network of international partners, we can set one up in whichever country suits your sector and where the demand is.',
+    image: asset('/images/sarit3.jpg'),
+    secondaryImage: asset('/images/sarit.jpg'),
+  },
+]
+
 const Services = () => {
-  const services = [
-    {
-      number: '01',
-      title: 'Exhibitions & Trade Fairs',
-      description:
-        'Exhibitions are a proven sales and marketing medium that provide a platform for stakeholders to stand face-to-face in one place at a time. We attract leading brands to our exhibitions taking place in various parts of the world, connecting them directly with their target business delegates.',
-      image: asset('/images/sarit.jpg'),
-    },
-    {
-      number: '02',
-      title: 'Event Management & Solutions',
-      description:
-        'We are a one-stop shop for all your event-related requirements. We provide assistance for event management and event solutions including booth construction and fabrication, conferences, webinars, branding and marketing services, travel and visa assistance, apart from planning and execution of events.',
-      image: asset('/images/sarit4.jpg'),
-    },
-    {
-      number: '03',
-      title: 'Buyer Seller Meets',
-      description:
-        'We have vast experience organizing Buyer Seller and Reverse Buyer Seller Meets worldwide. Through our ever-present network of international partners, we provide assistance in smoothly organizing such events in any desired country depending on the sectors of interest and demand.',
-      image: asset('/images/sarit3.jpg'),
-    },
-  ]
-
   return (
-    <section id="services" className="py-20 md:py-28 bg-white scroll-mt-20">
-      <div className="max-w-[1740px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="scroll-mt-20 bg-white py-16 md:py-24">
+      <div className="mx-auto max-w-[1740px] px-4 sm:px-6 lg:px-8">
 
-        {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-block text-cyan-600 font-semibold text-xs sm:text-sm tracking-[0.25em] uppercase mb-4">
-            Our Services
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
-            Services
-          </h2>
-          <div className="w-20 h-1 bg-cyan-500 rounded-full mx-auto"></div>
+        {/* Header */}
+        <div className="mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between">
+          <div>
+            <div className="mb-6 flex items-center gap-4">
+              <span className="h-px w-10 bg-slate-900" />
+              <span className="text-sm font-medium text-slate-900">
+                What we do
+              </span>
+            </div>
+            <h2 className="max-w-2xl font-serif text-4xl leading-[1.1] tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
+              How we help brands show up
+            </h2>
+          </div>
+
+          {/* <a
+            href="/services"
+            className="inline-flex w-fit items-center gap-2 border-b border-slate-900 pb-1 text-sm font-medium text-slate-900 transition-colors hover:border-cyan-700 hover:text-cyan-700"
+          >
+            All services
+            <span aria-hidden="true">→</span>
+          </a> */}
         </div>
 
-        {/* Alternating Rows */}
-        <div className="space-y-16 md:space-y-24">
+        {/* Rows */}
+        <div>
           {services.map((service, index) => {
-            const isReversed = index % 2 === 1
+            const reversed = index % 2 === 1
 
             return (
-              <div
-                key={index}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 items-stretch ${
-                  isReversed ? 'lg:[direction:rtl]' : ''
-                }`}
+              <article
+                key={service.number}
+                className="grid grid-cols-1 gap-6 border-t border-slate-300 py-8 md:py-10 lg:grid-cols-12 lg:gap-10"
               >
-                {/* Image */}
-                <div className={`relative h-72 md:h-96 lg:h-[450px] overflow-hidden ${isReversed ? 'lg:[direction:ltr]' : ''}`}>
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+                {/* Main image */}
+                <div className={`lg:col-span-7 ${reversed ? 'lg:order-2' : ''}`}>
+                  <div className="aspect-[3/2] h-full w-full overflow-hidden bg-slate-200 lg:aspect-auto lg:min-h-[420px]">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                 </div>
 
-                {/* Content */}
+                {/* Second image + text */}
                 <div
-                  className={`relative bg-slate-900 text-white p-8 md:p-12 lg:p-16 flex flex-col justify-center ${
-                    isReversed ? 'lg:[direction:ltr]' : ''
+                  className={`flex flex-col gap-6 lg:col-span-5 ${
+                    reversed ? 'lg:order-1' : ''
                   }`}
                 >
-                  <span className="absolute top-6 right-8 text-8xl md:text-9xl font-bold text-white/5 select-none pointer-events-none">
-                    {service.number}
-                  </span>
+                  <div className="relative min-h-[200px] flex-1 overflow-hidden bg-slate-200">
+                    <img
+                      src={service.secondaryImage}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </div>
 
-                  <div className="relative z-10">
-                    <div className="text-cyan-400 font-semibold text-xs tracking-[0.25em] uppercase mb-3">
-                      Service {service.number}
-                    </div>
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-5 leading-tight">
+                  <div>
+                    <span className="font-serif text-lg tabular-nums text-slate-400">
+                      {service.number}
+                    </span>
+                    <h3 className="mt-2 font-serif text-3xl leading-tight tracking-tight text-slate-900 md:text-4xl">
                       {service.title}
                     </h3>
-                    <div className="w-16 h-1 bg-cyan-400 rounded-full mb-6"></div>
-                    <p className="text-slate-300 text-base md:text-lg leading-relaxed">
+                    <p className="mt-4 max-w-md text-base leading-relaxed text-slate-600">
                       {service.description}
                     </p>
                   </div>
                 </div>
-              </div>
+              </article>
             )
           })}
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center mt-16">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 hover:bg-cyan-600 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
-          >
-            Explore Our Services
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+          <div className="border-t border-slate-300" />
         </div>
 
       </div>

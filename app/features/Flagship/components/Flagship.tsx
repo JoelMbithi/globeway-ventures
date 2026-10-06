@@ -7,28 +7,36 @@ const Flagship = () => {
       logo: asset('/flagship/flagship3.jpeg'),
       title: 'Kenya Pharma & Healthcare',
       date: '9 – 11 April, 2026',
-      venue: 'Kampala, Uganda',
+      venue: 'Nairobi, Kenya',
+      place: 'Sarit Centre',
+      time: '10am – 5:30pm',
       link: 'https://www.kenyapharmahealth.com/',
     },
     {
       logo: asset('/flagship/flagship2.jpeg'),
       title: 'Kenya Buildcon International Expo',
-      date: '11 – 13 June, 2026',
-      venue: 'Kampala, Uganda',
+      date: '9th – 11th June, 2027',
+      venue: 'Nairobi, Kenya',
+      place: 'Sarit Centre',
+      time: '10am – 5:30pm',
       link: 'https://kenyabuildcon.com/',
     },
     {
       logo: asset('/flagship/flagship1.jpeg'),
       title: 'Kenya Wood International Expo',
-      date: '11 – 13 June, 2026',
-      venue: 'Kampala, Uganda',
+      date: '9th – 11th June, 2027',
+      venue: 'Nairobi, Kenya',
+      place: 'Sarit Centre',
+      time: '10am – 5:30pm',
       link: 'https://kenyawoodexpo.com/',
     },
     {
       logo: asset('/flagship/flagship.jpeg'),
       title: 'Kenya Solar, Electric, Power & Lights International Expo',
-      date: '11 – 13 June, 2026',
-      venue: 'Kampala, Uganda',
+      date: '9th – 11th June, 2027',
+      venue: 'Nairobi, Kenya',
+      place: 'Sarit Centre',
+      time: '10am – 5:30pm',
       link: 'https://www.kenyasepl.com/',
     },
   ]
@@ -78,7 +86,7 @@ const Flagship = () => {
                 </div>
 
                 {/* Hover Overlay (mask) */}
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-cyan-900/90 backdrop-blur-sm flex flex-col justify-center items-center text-center p-4 md:p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-900/90 to-cyan-900/90 backdrop-blur-sm flex flex-col justify-center items-center text-center p-4 md:p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-y-auto">
 
                   {/* Date badge */}
                   {event.date && (
@@ -92,18 +100,43 @@ const Flagship = () => {
                     {event.title}
                   </h3>
 
-                  {/* Venue */}
-                  <div className="flex items-center gap-1.5 text-cyan-300 text-xs md:text-sm font-medium">
-                    <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <span>{event.venue}</span>
+                  {/* Details block — venue, place, time */}
+                  <div className="space-y-1.5 text-xs md:text-sm">
+                    {/* Venue */}
+                    {event.venue && (
+                      <div className="flex items-center justify-center gap-1.5 text-cyan-300 font-medium">
+                        <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span>{event.venue}</span>
+                      </div>
+                    )}
+
+                    {/* Place */}
+                    {event.place && (
+                      <div className="flex items-center justify-center gap-1.5 text-slate-300 font-medium">
+                        <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                        <span>{event.place}</span>
+                      </div>
+                    )}
+
+                    {/* Time */}
+                    {event.time && (
+                      <div className="flex items-center justify-center gap-1.5 text-slate-300 font-medium">
+                        <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{event.time}</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Visit link hint */}
                   {event.link && (
-                    <div className="mt-4 text-white/70 text-xs font-medium tracking-wider uppercase flex items-center gap-1.5">
+                    <div className="mt-3 text-white/70 text-[10px] md:text-xs font-medium tracking-wider uppercase flex items-center gap-1.5">
                       Visit Website
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

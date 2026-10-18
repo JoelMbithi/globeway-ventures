@@ -97,6 +97,9 @@ const filenames = [
   'WhatsApp Image 2026-10-06 at 19.05.56(1).jpeg',
   'WhatsApp Image 2026-10-06 at 19.05.56(2).jpeg',
   'WhatsApp Image 2026-10-06 at 19.05.57.jpeg',
+    'WhatsApp Image 2026-10-07 at 10.24.16.jpeg',
+  'WhatsApp Image 2026-10-07 at 10.24.16(1).jpeg',
+  'WhatsApp Image 2026-10-07 at 10.24.16(2).jpeg',
 ]
 
 const allImages = filenames.map((filename, i) => ({

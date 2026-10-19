@@ -17,7 +17,7 @@ const CONTACTS = [
   },
   {
     name: 'Instagram',
-    href: 'https://instagram.com/your-handle',
+    href: 'https://www.instagram.com/globewayventures/',
     color: 'bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF]',
     ring: 'ring-[#DD2A7B]/30',
     label: 'Instagram',
@@ -31,7 +31,7 @@ const CONTACTS = [
   },
   {
     name: 'Facebook',
-    href: 'https://facebook.com/your-page',
+    href: 'https://www.facebook.com/profile.php?id=61595656615790',
     color: 'bg-[#1877F2]',
     ring: 'ring-[#1877F2]/30',
     label: 'Facebook',

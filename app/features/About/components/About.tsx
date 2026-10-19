@@ -57,13 +57,16 @@ const About = () => {
             </h3>
             <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-5">
               GLOBEWAY Ventures is a professional exhibition and event management company
-              dedicated to connecting global brands with opportunities across Kenya and
+              dedicated to connecting global brands with opportunities in Kenya and
               the East African market.
             </p>
+             <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              Exhibitions Planning and Management
+            </h3>
             <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-8">
-              From exhibitions and trade fairs to booth construction, logistics, travel
-              assistance, security, branding and marketing — we deliver end-to-end
-              solutions designed to create visibility and impact.
+             Spanning from Booth building and construction, Logistics, Travel
+              assistance, Security, Branding and Marketing  we deliver end-to-end
+              solutions designed to create visibility and impactful results.
             </p>
 
             {/* Feature List */}
@@ -123,7 +126,7 @@ const About = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-12 border-t border-slate-200">
           {[
             { value: '50+', label: 'Events Delivered' },
-            { value: '5+', label: 'Global Partners' },
+            { value: '4+', label: 'Global Partners' },
             { value: '1+', label: 'Countries Served' },
             { value: '100%', label: 'Client Satisfaction' },
           ].map((stat, index) => (

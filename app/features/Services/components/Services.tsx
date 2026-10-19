@@ -6,7 +6,7 @@ const services = [
     number: '01',
     title: 'Exhibitions & Trade Fairs',
     description:
-      'Exhibitions put buyers and sellers face to face, in one place at one time. We bring leading brands to our shows around the world and connect them directly with the business delegates they want to meet.',
+      'Exhibitions put buyers and sellers face to face, in one place at one time. Globeways acts as an interface that brings on board global brands and local market players providing exclusive platform to engage and tap opportunities hence enhancing leverage.',
     image: asset('/images/sarit.jpg'),
     secondaryImage: asset('/images/sarit4.jpg'),
   },
@@ -14,7 +14,7 @@ const services = [
     number: '02',
     title: 'Event Management & Solutions',
     description:
-      'Whatever your event needs, we can take it on: booth design and construction, conferences, webinars, branding and marketing, travel and visa support, and the planning and running of the event itself.',
+      'Whatever your event needs, we can take it on: Booth Design and Construction, Conferences, Webinars, Branding and Marketing, Travel and visa support, Planning and Running of the event itself.',
     image: asset('/images/sarit4.jpg'),
     secondaryImage: asset('/images/sarit3.jpg'),
   },
@@ -22,7 +22,7 @@ const services = [
     number: '03',
     title: 'Buyer Seller Meets',
     description:
-      'We have organized Buyer Seller and Reverse Buyer Seller Meets across the world. With our network of international partners, we can set one up in whichever country suits your sector and where the demand is.',
+      'On sidelines Globeways organises for Buyer Seller and Reverse Buyer Seller Meets across the world.In partnership with our international partners, Globeway arrages and facilitates such meet ups.',
     image: asset('/images/sarit3.jpg'),
     secondaryImage: asset('/images/sarit.jpg'),
   },

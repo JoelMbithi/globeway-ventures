@@ -5,12 +5,12 @@ const statements = [
   {
     label: 'Our vision',
     title: 'The gateway to East Africa',
-    text: 'To be East Africa’s leading gateway for global brands looking to enter the market and be seen.',
+    text: 'To be East Africa’s leading gateway for global brands looking to enter into both Kenya and the larger East African market.',
   },
   {
     label: 'Our mission',
     title: 'Real connections, well run',
-    text: 'To run exhibitions that are professional and run smoothly, and that connect global companies with local opportunity.',
+    text: 'To run exhibitions that are professional with an aim to connecting global companies with local market opportunities.',
   },
 ]
 

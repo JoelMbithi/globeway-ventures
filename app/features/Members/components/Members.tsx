@@ -47,7 +47,7 @@ const Members = () => {
           </h2>
           <div className="w-16 h-1 bg-cyan-500 rounded-full mx-auto mb-6"></div>
           <p className="text-slate-500 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-            The people behind our events, our partnerships, and our vision proudly Kenyan, globally connected.
+            The people behind our EVENTS, our PARTNERSHIPS and our VISION.
           </p>
         </div>
 

@@ -7,22 +7,11 @@ const WhyUs = () => {
     number: '01',
     title: 'A growing regional market',
     description:
-      'Kenya is one of East Africa’s busiest markets. Exhibiting here gets your brand seen and starts the kind of relationships that turn into business.',
+      'With Kenyas GDP  standing at Ksh 19.6 Trillion it remains to be East Africas busiest market for multiple sectors.',
   },
-    {
-      number: '02',
-      title: 'Business Connections',
-      description:
-        'Our exhibitions put local and international brands in the same room as buyers, investors, distributors and the people who sign off on deals.',
-    },
-    {
-    number: '03',
-    title: 'People who know the ground',
-    description:
-      'We know how business works in Kenya and run events to international standards, so you spend less time figuring things out and more time meeting people.',
-  },
+  
   {
-    number: '04',
+    number: '02',
     title: 'A base for East Africa',
     description:
       'Once you have a footing in Kenya, the wider region is within reach through exhibitions, networking and meetings built around your market.',
@@ -67,7 +56,7 @@ const WhyUs = () => {
             </h2>
 
             <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-8 max-w-md">
-              Kenya provides a strategic platform for international brands looking to explore, connect and grow within the East African market.
+             With Kenya Boasting of a population of over 58.64 Million, it provides a strategic platform for international brands looking to explore, connect and grow  within the East Africa market.
             </p>
 
             {/* Stat block — grounds the section in something concrete */}

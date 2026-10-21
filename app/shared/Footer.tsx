@@ -2,13 +2,13 @@ import React from 'react'
 
 const Footer = () => {
   const quickLinks = [
-    { name: 'Home', href: 'index.html' },
-    { name: 'About Us', href: 'about.html' },
-    { name: 'Sectors', href: 'sectors.html' },
-    { name: 'Exhibitions & Events', href: 'exhibitions.html' },
-    { name: 'Services', href: 'services.html' },
-    { name: 'Gallery', href: 'gallery.html' },
-    { name: 'Contact', href: 'contact.html' },
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '#about' },
+    { name: 'Sectors', href: '#sectors' },
+    { name: 'Exhibitions & Events', href: '#events' },
+    { name: 'Services', href: '#servicesl' },
+    { name: 'Gallery', href: '/Gallery' },
+    { name: 'Contact', href: '/Contacts' },
   ]
 
   const services = [
@@ -82,7 +82,7 @@ const Footer = () => {
               {services.map((service, index) => (
                 <li key={index}>
                   <a
-                    href="services.html"
+                    href="#services"
                     className="text-slate-400 hover:text-cyan-400 text-sm transition-colors duration-300 inline-flex items-center gap-2 group"
                   >
                     <span className="w-0 group-hover:w-3 h-px bg-cyan-400 transition-all duration-300"></span>
@@ -132,19 +132,19 @@ const Footer = () => {
                 <div className="text-cyan-400 font-semibold text-xs tracking-wider uppercase mb-1">
                   Email
                 </div>
-                <div className="text-slate-400">Official email coming soon</div>
+                <div className="text-slate-400">globewayventures@gmail.com</div>
               </div>
 
               <div>
                 <div className="text-cyan-400 font-semibold text-xs tracking-wider uppercase mb-1">
                   Phone
                 </div>
-                <div className="text-slate-400">Official phone coming soon</div>
+                <div className="text-slate-400">0759877378</div>
               </div>
             </div>
 
             <a
-              href="contact.html"
+              href="/Contacts"
               className="inline-flex items-center gap-2 mt-5 text-cyan-400 hover:text-cyan-300 font-semibold text-sm transition-colors duration-300 group"
             >
               Contact Us

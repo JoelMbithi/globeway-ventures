@@ -4,17 +4,17 @@ import { asset } from '@/app/lib/asset'
 const Members = () => {
   const managers = [
     {
-      name: 'Oscar Mwanga Abwoga',
+      name: 'Mr.Oscar Mwanga Abwoga',
       role: 'Director',
       description:
         'With over 20 years of experience in international trade and event management, Oscar leads the company with a vision to connect businesses across continents.',
       image: asset('/members/osca.jpeg'),
     },
     {
-      name: 'Meshack',
+      name: 'Mr.Meshack Oduor Ochieng',
       role: 'Director',
       description:
-        'Meshack oversees all operational aspects of our events, ensuring seamless execution from concept to completion. His attention to detail is unmatched.',
+        'Mr.Meshack Oduor Ochieng oversees all operational aspects of our events, ensuring seamless execution from concept to completion. His attention to detail is unmatched.',
       image: asset('/members/meshark.jpeg'),
     },
   ]

@@ -44,7 +44,7 @@ const Contacts = () => {
         </svg>
       ),
       label: 'Contact Numbers',
-      value: 'Official phone coming soon',
+      value: '0759877378',
     },
     {
       icon: (
@@ -53,7 +53,7 @@ const Contacts = () => {
         </svg>
       ),
       label: 'E-mail',
-      value: 'Official email coming soon',
+      value: 'globewayventures@gmail.com',
     },
   ]
 
@@ -133,7 +133,7 @@ const Contacts = () => {
                       required
                       value={form.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition bg-white"
+                      className="w-full px-4 text-gray-600 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition bg-white"
                       placeholder="Your full name"
                     />
                   </div>
@@ -149,8 +149,8 @@ const Contacts = () => {
                       required
                       value={form.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition bg-white"
-                      placeholder="you@example.com"
+                      className="w-full px-4 py-3 text-gray-600 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition bg-white"
+                      placeholder="Enter your email"
                     />
                   </div>
 
@@ -165,8 +165,8 @@ const Contacts = () => {
                       required
                       value={form.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition bg-white"
-                      placeholder="+254 700 000 000"
+                      className="w-full px-4 py-3 text-gray-600 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition bg-white"
+                      placeholder="Enter your Phonenumber"
                     />
                   </div>
 
@@ -181,7 +181,7 @@ const Contacts = () => {
                       required
                       value={form.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition bg-white resize-none"
+                      className="w-full px-4 py-3 text-gray-600 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition bg-white resize-none"
                       placeholder="Tell us about your project, exhibition or event..."
                     />
                   </div>
@@ -197,7 +197,7 @@ const Contacts = () => {
                       required
                       value={form.captcha}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition bg-white"
+                      className="w-full px-4 py-3 text-gray-600 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition bg-white"
                       placeholder="Your answer"
                     />
                   </div>

@@ -3,7 +3,7 @@ import React from 'react'
 const CONTACTS = [
   {
     name: 'WhatsApp',
-    href: 'https://wa.me/0759873378?text=' + encodeURIComponent(
+    href: 'https://wa.me/+254759873378?text=' + encodeURIComponent(
       "Hi Globway Ventures, I'd like to know more about your exhibitions."
     ),
     color: 'bg-[#25D366]',

@@ -1,20 +1,21 @@
 import React from 'react'
+import Link from 'next/link'
 import { asset } from '@/app/lib/asset'
 
 const Members = () => {
-  const managers = [
+  const directors = [
     {
       name: 'Mr.Oscar Mwanga Abwoga',
       role: 'Director',
       description:
-        'With over 20 years of experience in international trade and event management, Oscar leads the company with a vision to connect businesses across continents.',
+        'Over 20 years in international trade and event management. Oscar leads the company with one aim: connecting businesses across continents.',
       image: asset('/members/osca.jpeg'),
     },
     {
       name: 'Mr.Meshack Oduor Ochieng',
       role: 'Director',
       description:
-        'Mr.Meshack Oduor Ochieng oversees all operational aspects of our events, ensuring seamless execution from concept to completion. His attention to detail is unmatched.',
+        'Meshack runs operations for every event, from the first concept to the last day on the floor. His attention to detail is what clients remember.',
       image: asset('/members/meshark.jpeg'),
     },
   ]
@@ -24,105 +25,134 @@ const Members = () => {
       name: 'Global Expo Alliance',
       role: 'Strategic Partner',
       description:
-        'A leading international exhibition organizer with presence in over 30 countries, helping us expand our reach globally.',
-      logo: asset('/members/osca.jpeg'),
+        'International exhibition organizer with a presence in over 30 countries, helping us reach further.',
     },
     {
       name: 'TravelPro International',
       role: 'Travel Partner',
       description:
-        'Specializing in corporate travel and visa assistance, ensuring our delegates and partners travel hassle-free.',
-      logo: asset('/members/meshark.jpeg'),
+        'Corporate travel and visa support, so delegates and partners arrive without the hassle.',
     },
   ]
 
   return (
-    <section id="members" className="py-16 md:py-24 bg-white scroll-mt-20">
+    <section id="members" className="py-14 md:py-20 bg-white scroll-mt-20">
       <div className="max-w-[1740px] mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Section Header — single, clear identity */}
-        <div className="max-w-2xl mx-auto text-center mb-14 md:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-5">
-            Meet Our Team
-          </h2>
-          <div className="w-16 h-1 bg-cyan-500 rounded-full mx-auto mb-6"></div>
-          <p className="text-slate-500 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-            The people behind our EVENTS, our PARTNERSHIPS and our VISION.
+        {/* Header */}
+        <div className="grid md:grid-cols-2 gap-4 md:gap-12 md:items-end mb-10 md:mb-12">
+          <div>
+            <p className="text-cyan-700 text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+              Our team
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-[1.1]">
+              The people behind the events
+            </h2>
+          </div>
+          <p className="text-slate-500 text-sm md:text-base leading-relaxed">
+            Two directors, one shared goal: events that bring the right
+            businesses into the same room.
           </p>
         </div>
 
-        {/* Leadership Section */}
-        <div className="mb-16 md:mb-20">
-          <div className="flex items-center gap-4 mb-8 max-w-6xl mx-auto">
-            <h3 className="text-lg md:text-xl font-bold text-slate-900 whitespace-nowrap">
-              Leadership
+        {/* Directors */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {directors.map((person, index) => (
+            <article
+              key={person.name}
+              className="group flex gap-5 sm:gap-6 p-4 sm:p-5 rounded-xl border border-slate-200 hover:border-slate-300 transition-colors duration-300"
+            >
+              {/* Photo with flat offset block behind it */}
+              <div className="relative shrink-0 w-32 sm:w-40 self-start">
+                <div className="absolute -bottom-2 -right-2 w-full h-full rounded-lg bg-cyan-500/90"></div>
+                <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-slate-200">
+                  <img
+                    src={person.image}
+                    alt={person.name}
+                    className="w-full h-full object-cover   group-hover:grayscale-100 transition-[filter] duration-500"
+                  />
+                </div>
+              </div>
+
+              {/* Text */}
+              <div className="flex flex-col min-w-0 py-1">
+                <span className="text-slate-300 text-sm font-semibold tabular-nums mb-2">
+                  0{index + 1}
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug">
+                  {person.name}
+                </h3>
+                <p className="text-cyan-700 text-xs font-medium tracking-[0.15em] uppercase mt-1 mb-3">
+                  {person.role}
+                </p>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  {person.description}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Group photo */}
+        <figure className="mt-12 md:mt-16">
+          <div className="overflow-hidden rounded-xl">
+            <img
+              src={asset('/members/group.jpg')}
+              alt="The Globeway team together"
+              className="w-full h-40 sm:h-60 md:h-110 object-cover hover:scale-[1.03] transition-transform duration-700"
+            />
+          </div>
+          <figcaption className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mt-3">
+            <span className="text-slate-900 text-sm font-semibold">
+              One team, one vision
+            </span>
+           
+          </figcaption>
+        </figure>
+
+        {/* Partners */}
+        <div className="mt-12 md:mt-16">
+          <div className="flex items-center gap-4 mb-2">
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-[0.15em] whitespace-nowrap">
+              Partners
             </h3>
             <div className="flex-1 h-px bg-slate-200"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-10 max-w-6xl mx-auto">
-            {managers.map((manager, index) => (
+          <div className="grid md:grid-cols-2 md:gap-x-12">
+            {partners.map((partner) => (
               <div
-                key={index}
-                className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col border border-slate-100"
+                key={partner.name}
+                className="py-5 border-b border-slate-200"
               >
-                <div className="relative aspect-[4/5] overflow-hidden bg-slate-200">
-                  <img
-                    src={manager.image}
-                    alt={manager.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h4 className="text-lg md:text-xl font-bold text-white drop-shadow-lg">
-                      {manager.name}
-                    </h4>
-                  </div>
+                <div className="flex items-baseline justify-between gap-4 mb-1.5">
+                  <h4 className="text-base font-semibold text-slate-900">
+                    {partner.name}
+                  </h4>
+                  <span className="text-cyan-700 text-xs font-medium uppercase tracking-wide whitespace-nowrap">
+                    {partner.role}
+                  </span>
                 </div>
-
-                <div className="p-5 md:p-6 flex-1 flex flex-col">
-                  <div className="text-cyan-600 font-semibold text-[10px] tracking-[0.2em] uppercase mb-2">
-                    {manager.role}
-                  </div>
-                  <div className="w-8 h-0.5 bg-cyan-500 rounded-full mb-3"></div>
-                  <p className="text-slate-600 text-sm leading-relaxed flex-1">
-                    {manager.description}
-                  </p>
-                </div>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  {partner.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Group Image */}
-        <div className="relative mb-16 md:mb-20 overflow-hidden rounded-xl shadow-lg">
-          <img
-            src={asset('/members/group.jpg')}
-            alt="Our Team"
-            className="w-full h-56 sm:h-72 md:h-96 object-cover hover:scale-105 transition-transform duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-            <h3 className="text-xl md:text-3xl font-bold text-white mb-1">
-              One Team, One Vision
-            </h3>
-            <p className="text-slate-200 text-sm md:text-base max-w-xl">
-              United by a passion for connecting businesses worldwide.
-            </p>
-          </div>
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center">
-          <a
+        {/* CTA */}
+        <div className="mt-10 md:mt-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <p className="text-slate-600 text-sm md:text-base">
+            Want to exhibit, partner or work with us?
+          </p>
+          <Link
             href="/Contacts"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-slate-900 hover:bg-cyan-600 text-white text-sm font-semibold rounded-lg shadow-lg transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 hover:bg-cyan-700 text-white text-sm font-semibold rounded-md transition-colors duration-200"
           >
-            Join Our Network
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+            Join our network
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
 
       </div>

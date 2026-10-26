@@ -263,7 +263,7 @@ const Members = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10">
                 {group.people.map((person) => (
                   <div key={person.name} className="flex flex-col">
-                    <div className="aspect-[4/3] sm:aspect-[3/4] overflow-hidden rounded-lg bg-slate-100">
+                    <div className="aspect-[3/4] sm:aspect-[3/4] overflow-hidden rounded-lg bg-slate-100">
                       <img
                         src={person.image}
                         alt={person.name}

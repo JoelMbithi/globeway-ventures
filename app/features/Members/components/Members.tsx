@@ -171,14 +171,14 @@ const Members = () => {
       label: 'Leadership',
       people: [
         {
-          name: 'Oscar Mwanga Abwoga',
+          name: 'Mr.Oscar Mwanga Abwoga',
           role: 'Director',
           description:
             'Over 20 years in international trade and event management. Oscar leads the company and its work connecting businesses across continents.',
           image: asset('/members/osca.jpeg'),
         },
         {
-          name: 'Meshack Oduor Ochieng',
+          name: 'Mr.Meshack Oduor Ochieng',
           role: 'Director',
           description:
             'Oversees operations for every event, from first concept to the final day on the floor. Nothing gets past him.',
@@ -190,7 +190,7 @@ const Members = () => {
       label: 'Team',
       people: [
         {
-          name: 'Eric Mwanzia',
+          name: 'Eric Kyalo',
           role: 'Administrator',
           description:
             'Keeps schedules, communication and day-to-day admin running so the rest of the team can focus on events.',
